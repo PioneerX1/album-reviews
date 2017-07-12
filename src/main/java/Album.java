@@ -46,6 +46,35 @@ public class Album {
     }
   }
 
+  public void updateName(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE albums SET name = :name WHERE id=:id";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
+  public void updateReleaseYear(int release) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE albums SET release = :release WHERE id=:id";
+      con.createQuery(sql)
+        .addParameter("release", release)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM albums WHERE id = :id;";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
   public String getName() {
     return name;
   }
