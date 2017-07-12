@@ -38,7 +38,7 @@ public class Album {
 
   public static Album find(int id){
     try(Connection con = DB.sql2o.open()){
-      String sql = "SELECT * FROM albums where id=:id";
+      String sql = "SELECT * FROM albums WHERE id=:id";
       Album album = con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Album.class);
@@ -74,6 +74,16 @@ public class Album {
         .executeUpdate();
     }
   }
+
+  // public static List<Album> lookupByArtist(int artist_id) {
+  //   try(Connection con = DB.sql2o.open()){
+  //     String sql = "SELECT * FROM albums WHERE artist_id=:artist_id";
+  //     Album album = con.createQuery(sql)
+  //     .addParameter("artist_id", artist_id)
+  //     .executeAndFetch(Album.class);
+  //   return album;
+  //   }
+  // }
 
   public String getName() {
     return name;

@@ -1,0 +1,18 @@
+<div id="artist-page">
+  <div class="container">
+    <h1 id="artist-name-banner">$artist.getName()</h1>
+  </div>
+  <div id="artist-albums">
+    #if($albums)
+      <h3>List of Albums by $artist.getName(), Click on One to View A Review</h3>
+      <br>
+      <ul>
+        #foreach ($album in $albums)
+          #if ($artist.getId() == $album.getArtistId())
+            <li><a href="/album/$album.getId()">$album.getName()</a></li>
+          #end
+        #end
+      </ul>
+    #end
+  </div>
+</div>

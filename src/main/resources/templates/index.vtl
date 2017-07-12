@@ -1,7 +1,7 @@
 <h1>Rotten Peaches</h1>
 <h2>A Music Review Site For Bad Tastes</h2>
 
-<div class="main-con">
+<div class="main-container">
 
   <div class="artist-list">
     #if($artists)
@@ -21,7 +21,7 @@
       <br>
       <ul>
         #foreach ($album in $albums)
-          <li><a href="/artist/$artist.getId()/$album.getId()">$album.getName()</a></li>
+          <li><a href="/album/$album.getId()">$album.getName()</a></li>
         #end
       </ul>
     #end
