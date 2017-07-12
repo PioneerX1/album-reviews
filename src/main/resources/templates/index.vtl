@@ -1,0 +1,37 @@
+<h1>Rotten Peaches</h1>
+<h2>A Music Review Site For Bad Tastes</h2>
+
+<div class="main-con">
+
+  <div class="artist-list">
+    #if($artists)
+      <h4>List of Artists, Click on One to View Their Albums &amp; Reviews</h4>
+      <br>
+      <ul>
+        #foreach ($artist in $artists)
+          <li><a href="/artist/$artist.getId()">$artist.getName()</a></li>
+        #end
+      </ul>
+    #end
+  </div>
+
+  <div class="album-list">
+    #if($albums)
+      <h4>List of Albums, Click on One to View Their Reviews</h4>
+      <br>
+      <ul>
+        #foreach ($album in $albums)
+          <li><a href="/artist/$artist.getId()/$album.getId()">$album.getName()</a></li>
+        #end
+      </ul>
+    #end
+  </div>
+
+  <div class="new-review-form">
+    <form action="/new-album-review" method="post">
+      <h4>Click the Button to Submit a New Album Review</h4>
+      <button type="submit" class="btn btn-success">New Review</button>
+    </form>
+  </div>
+
+</div>
