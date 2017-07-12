@@ -27,5 +27,15 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/album/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Album album = Album.find(Integer.parseInt(request.params(":id")));
+      Artist artist = Artist.find(Integer.parseInt(request.params(":id")));
+      model.put("album", album);
+      model.put("artist", artist);
+      model.put("template", "templates/album.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
