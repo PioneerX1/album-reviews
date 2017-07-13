@@ -55,6 +55,18 @@ public class ReviewTest{
   }
 
   @Test
+  public void save_associatesAnAlbumIdWithThisReview_1() {
+    Artist testArtist1 = new Artist("AR Rahman");
+    testArtist1.save();
+    Album testAlbum1 = new Album("Roja", 1994, "Indian melody", testArtist1.getId());
+    testAlbum1.save();
+    Review testReview1 = new Review("ls", "awesome", 5, testAlbum1.getId());
+    testReview1.save();
+    assertEquals(testReview1.getAlbumId(), testAlbum1.getId());
+    assertEquals(testArtist1.getId(), testAlbum1.getArtistId());
+  }
+
+  @Test
   public void find_retrievesReviewWithSameId_testReview2() {
     Review testReview1 = new Review("blue", "mind blowing", 1, 1);
     testReview1.save();

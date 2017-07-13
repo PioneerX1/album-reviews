@@ -1,0 +1,19 @@
+<!--add-review-form.vtl-->
+<h1>Add Review for $album.getName()</h1>
+
+<form action="/album/:id" method="post">
+  <label for="name">Your Name: </label>
+  <input id="review-name-input" name="name" class="form-control" type="text">
+  <label for="comment">Comments: </label>
+  <input id="review-comment-input" name="comment" class="form-control" type="text">
+  <label for="rating">1-5 Star Rating: </label>
+  <select id="review-rating-select" name="rating">
+    <option value=1>1 Star</option>
+    <option value=2>2 Stars</option>
+    <option value=3>3 Stars</option>
+    <option value=4>4 Stars</option>
+    <option value=5>5 Stars</option>
+  </select>
+  <button type="submit" class="btn btn-primary">Submit Review</button>
+</form>
+<!--add-review-form.vtl-->
