@@ -10,20 +10,20 @@
   </div>
 
   <div id="album-review">
-    <form action="/album/$album.getId()/add-review" method="get">
+    <form action="/artist/$artist.getId()/album/$album.getId()/add-review" method="get">
       <h4>Click the Button to Submit Your Review For This Album</h4>
       <button type="submit" class="btn btn-primary">New Review</button>
     </form>
   </div>
 
-  <div class="reviews">
+  <div class="reviews-section">
     #foreach($review in $reviews)
-    #if($review.getAlbumId() == $album.getId())
       <div class="review-box">
         <h6>$review.getName()</h6>
         <h6>$review.getComment()</h6>
         <h6>$review.getRating()</h6>
       </div>
+    #end
   </div>
 </div>
 <!-- album.vtl -->

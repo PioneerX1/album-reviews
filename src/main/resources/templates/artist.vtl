@@ -7,7 +7,7 @@
       <br>
         #foreach ($album in $albums)
           #if ($artist.getId() == $album.getArtistId())
-            <h3><a href="/album/$album.getId()">$album.getName()</a></h3>
+            <h3><a href="/artist/$artist.getId()/album/$album.getId()">$album.getName()</a></h3>
           #end
         #end
     #end

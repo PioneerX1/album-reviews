@@ -60,6 +60,17 @@ public class Review{
     }
   }
 
+  public static List<Review> findAlbumId(int albumId){
+    try(Connection con = DB.sql2o.open()){
+      String sql = "SELECT * FROM reviews WHERE albumId=:albumId;";
+      List selectedReviews = con.createQuery(sql)
+        .addParameter("albumId", albumId)
+        .executeAndFetch(Review.class);
+      return selectedReviews;
+
+    }
+  }
+
   public void update(String name, String comment, int rating) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE reviews SET name = :name, comment = :comment, rating = :rating WHERE id=:id;";

@@ -94,4 +94,27 @@ public class ReviewTest{
     assertEquals(null, Review.find(testReviewId));
   }
 
+  @Test
+  public void findAlbumId_returnsAllReviewsWithEqualAlbumIds_true(){
+    Artist testArtist1 = new Artist("AR Rahman");
+    testArtist1.save();
+    Album testAlbum1 = new Album("Roja", 1994, "Indian melody", testArtist1.getId());
+    testAlbum1.save();
+    Review testReview1 = new Review("ls", "awesome", 5, testAlbum1.getId());
+    testReview1.save();
+    Review testReview2 = new Review("saulio", "can't hear it, sorry", 1, testAlbum1.getId());
+    testReview2.save();
+    Review testReview3 = new Review("mickles", "delicious, would eat here again", 4, 3);
+    testReview3.save();
+    List<Review> album1reviews = Review.findAlbumId(testAlbum1.getId());
+
+    assertTrue(album1reviews.get(0).equals(testReview1));
+    assertTrue(album1reviews.get(1).equals(testReview2));
+    assertTrue(album1reviews.contains(testReview2));
+    assertFalse(album1reviews.contains(testReview3));
+    assertFalse(album1reviews.size() > 2);
+
+
+  }
+
 }

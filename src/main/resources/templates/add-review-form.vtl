@@ -1,7 +1,7 @@
 <!--add-review-form.vtl-->
 <h1>Add Review for $album.getName()</h1>
 
-<form action="/album/:id" method="post">
+<form action="/artist/$artist.getId()/album/$album.getId()" method="post">
   <label for="name">Your Name: </label>
   <input id="review-name-input" name="name" class="form-control" type="text">
   <label for="comment">Comments: </label>

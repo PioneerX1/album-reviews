@@ -8,11 +8,9 @@
     #if($artists)
       <h4>List of Artists, Click on One to View Their Albums &amp; Reviews</h4>
       <br>
-      <ul>
         #foreach ($artist in $artists)
-          <li><a href="/artist/$artist.getId()">$artist.getName()</a></li>
+          <h2><a href="/artist/$artist.getId()">$artist.getName()</a></h2>
         #end
-      </ul>
     #end
   </div>
 
@@ -20,11 +18,9 @@
     #if($albums)
       <h4>List of Albums, Click on One to View Their Reviews</h4>
       <br>
-      <ul>
         #foreach ($album in $albums)
-          <li><a href="/album/$album.getId()">$album.getName()</a></li>
+          <h3><a href="/artist/$artist.getId()/album/$album.getId()">$album.getName()</a></h3>
         #end
-      </ul>
     #end
   </div>
 

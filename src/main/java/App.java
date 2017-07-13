@@ -27,9 +27,9 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/album/:id", (request, response) -> {
+    get("artist/:artistId/album/:albumId", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      Album album = Album.find(Integer.parseInt(request.params(":id")));
+      Album album = Album.find(Integer.parseInt(request.params(":albumId")));
       Artist artist = Artist.find(album.getArtistId());
       model.put("album", album);
       model.put("artist", artist);
@@ -37,9 +37,9 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/album/:id/add-review", (request, response) -> {
+    get("artist/:artistId/album/:albumId/add-review", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      Album album = Album.find(Integer.parseInt(request.params(":id")));
+      Album album = Album.find(Integer.parseInt(request.params(":albumId")));
       Artist artist = Artist.find(album.getArtistId());
       model.put("album", album);
       model.put("artist", artist);
@@ -47,18 +47,21 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/album/:id", (request, response) -> {
+    post("artist/:artistId/album/:albumId", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      Album album = Album.find(Integer.parseInt(request.params(":id")));
+      Album album = Album.find(Integer.parseInt(request.params(":albumId")));
       Artist artist = Artist.find(album.getArtistId());
-      Review review = Review.find(review.getAlbumId());
+      String reviewName = request.queryParams("name");
+      String reviewComment = request.queryParams("comment");
+      int reviewRating = Integer.parseInt(request.queryParams("rating"));
+      Review review = new Review(reviewName, reviewComment, reviewRating, album.getId());
+      review.save();
       model.put("album", album);
       model.put("artist", artist);
-      model.put("review", review);
+      model.put("reviews", Review.findAlbumId(album.getId()));
       model.put("template", "templates/album.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-    })
 
   }
 }
