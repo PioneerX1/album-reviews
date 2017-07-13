@@ -1,0 +1,30 @@
+<!--new-review-form.vtl-->
+<h1>Add A Brand New Review</h1>
+
+<form action="/success" method="post">
+  <label for="user-artist">Album Artist: </label>
+  <input id="user-artist" name="user-artist" class="form-control" type="text">
+  <label for="user-album-name">Album Name: </label>
+  <input id="user-album-name" name="user-album-name" class="form-control" type="text">
+  <label for="user-album-year">Release Year: </label>
+  <input id="user-album-year" name="user-album-year" class="form-control" type="text">
+  <label for="user-album-genre">Genre: </label>
+  <input id="user-album-genre" name="user-album-genre" class="form-control" type="text">
+
+  <br>
+
+  <label for="name">Your Name: </label>
+  <input id="review-name-input" name="name" class="form-control" type="text">
+  <label for="comment">Comments: </label>
+  <input id="review-comment-input" name="comment" class="form-control" type="text">
+  <label for="rating">1-5 Star Rating: </label>
+  <select id="review-rating-select" name="rating">
+    <option value=1>1 Star</option>
+    <option value=2>2 Stars</option>
+    <option value=3>3 Stars</option>
+    <option value=4>4 Stars</option>
+    <option value=5>5 Stars</option>
+  </select>
+  <button type="submit" class="btn btn-primary">Submit Review</button>
+</form>
+<!--new-review-form.vtl-->

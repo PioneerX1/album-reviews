@@ -19,9 +19,11 @@
   <div class="reviews-section">
     #foreach($review in $reviews)
       <div class="review-box">
-        <h6>$review.getName()</h6>
-        <h6>$review.getComment()</h6>
-        <h6>$review.getRating()</h6>
+        <h3><em>$review.getName()</em></h3>
+        <hr>
+        <h3>$review.getComment()</h3>
+        <hr>
+        <h4>$review.getRating()/5</h4>
       </div>
     #end
   </div>
